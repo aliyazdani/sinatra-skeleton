@@ -1,0 +1,36 @@
+<div class="container">
+  <section class="team-header">
+    <img src="<%= @team.logo_url %>">
+    <h1><%= @team.city %> <%= @team.name %> Team Page</h1>
+  </section>
+
+  <div class="row">
+    <section class="add-player-form col-sm-6">
+      <h4>Add a Player Here</h4>
+      <form action="/teams/<%= @team.id %>/players/new" method="POST">
+        <p>Player Name:<input type="text" name="name"></p>
+        <p>Player Age:<input type="text" name="age"></p>
+        <p>Player Jersey Number:<input type="text" name="jersey_number"></p>
+        <input type="submit" class="btn btn-success">
+      </form>
+    </section>
+
+    <section class="players-table col-sm-6">
+      <table class="table table-striped">
+        <tr>
+          <th>Player Name</th>
+          <th>Player Age</th>
+          <th>Player Jersey Number</th>
+        </tr>
+        <% @team.players.each do |player| %>
+          <tr>
+            <td><%= player.name %></td>
+            <td><%= player.age %></td>
+            <td><%= player.jersey_number %></td>
+          </tr>
+        <% end %>
+      </table>    
+    </section>
+  </div>
+
+</div>
