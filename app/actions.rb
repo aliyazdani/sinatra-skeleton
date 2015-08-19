@@ -1,29 +1,15 @@
 # Homepage (Root path)
+# '/' is the same as http://localhost:3000
 get '/' do
+  @fruits = ['Orange', 'Apple', 'Grapefruit', 'tomato', 'pineapple']
   erb :index
 end
 
-# Teams index
-get '/teams' do
-  @teams = Team.all
-  erb :teams
+# this is when u use browser and go to www.mysite.com/signup
+get '/signup' do
+  erb :signup
 end
 
-# Page that includes a form to create new team
-get '/teams/new' do
-  erb :new_team
-end
-
-# Action to create a new team
-post '/teams/new' do
-end
-
-# show a particular team
-get '/teams/:id' do
-  @team = Team.find(params[:id])
-  erb :team
-end
-
-# create a player belonging to a team
-post '/teams/:id/players/new' do
+post '/signup' do
+  redirect '/'
 end
